@@ -22,3 +22,125 @@ Specify the path to this directory on the agent. I’ve specified /home/ec2-user
 Labels: Labels are used to group multiple agents into one logical group. Multiple labels must be separated by a space.
 
 &&&&&&&&&Integration between jenkins and github&&&&&&&&&&
+Option a)
+Go to Github account repo name of Organization: "staticwebsites"  -->> settings ----> click on "integrate and service" --> search "Jenkins(Github) ---> click on "addservice"
+then you can go ahead for creating github account repo in jenkins jobs as below example
+
+(or)
+
+Option b)
+Go to Github Organization -->> "Settings" --> click on "webhooks"--->> again click on "Add Webhook" and confirm "Password"-->then
+Under "Payload URL" -->>give the your Jenkins URL: Ex: http://34.217.27.129:8080/github-webhook/ ---> click on "Add Webhook"-->Try to see the respne "200" success once you're added the url for load the jenkins url
+
+Jobs:
+1)simple echo jobs
+2)review logs
+3)Statiwebite job running on jenkins mater
+4)staticwebsite CI jobs integrating with github and jenkins
+
+Note:For online notes
+select the options to trigger "GitHub hook trigger for GITScm polling" under "Build Environment"
+On the v1.25.1 release of the GitHub plugin, trigger Build when a change is pushed to GitHub has been renamed to GitHub hook trigger for GITScm polling."
+
+https://stackoverflow.com/questions/41934478/build-when-a-change-is-pushed-to-github-is-missing
+
+
+**********Migrating jobs from existing old jenkins to other jenkins server**************
+3 ways 
+1:One is copying the jobs directories from exising jenkins(/var/lib/jenkins/jobs/sample-job) to new jenkins server(/var/lib/jenkins/jobs/sample-job-new) jobs directory then
+Click on "reload the configuration from disk" on new jenkins server console -->go to "Manage jenkins " --> click one "reload the configuration from disk"
+then you can see the jobs that you copied one in new jenkin server
+2:using "Jobs import plugin " -need to install this plugin on new jenkin server then should be enabled firewal of existing jenkins and new jenkins server
+then we can do import the multiple jobs at a time from New jenkinw server console by clicking on "Jobs import plugin" option"
+3:Using Jenkins CLI option from new jenkins server
+
+&How to retrieve Jenkins password?&
+Stop the Jenkins service.
+Open the config.xml with a text editor (i.e notepad++), maybe be in C:\jenkins\config.xml (could backup it also).
+Find this <useSecurity>true</useSecurity> and change it to <useSecurity>false</useSecurity>
+Start Jenkins service.
+
+and
+How to Reset Forgotten Jenkins Admin User's Password
+????
+
+-------------  Configure Global Security --------------
+Default port numbers for LDAP :
+LDAP with secure : 636
+LDAP without secure : 389
+
+hat is Jenkins Pipeline?
+In Jenkins, a pipeline is a group of events or jobs which are interlinked with one another in a sequence.
+
+In simple words, Jenkins Pipeline is a combination of plugins that support the integration and implementation 
+of continuous delivery pipelines using Jenkins. A pipeline has an extensible automation server 
+for creating simple or complex delivery pipelines "as code," via pipeline DSL (Domain-specific Language).
+
+What is Jenkins Pipeline?
+In Jenkins, a pipeline is a group of events or jobs which are interlinked with one another in a sequence.
+
+In simple words, Jenkins Pipeline is a combination of plugins that support the integration and
+implementation of continuous delivery pipelines using Jenkins. A pipeline has an extensible automation 
+server for creating simple or complex delivery pipelines "as code," via pipeline DSL (Domain-specific Language).
+
+^^^^^^^How to setup Build Pipeline in Jenkins job flow ^^^^^^^^^
+First install "Build pipeline plugin"
+
+then create a three jobs :
+1)BuildJOb
+2)TestJob
+3)DeployJob
+Under --> All+ --> just click on "+" then you can see "Build Pipeline View"
+
+a)—Under “Build Pipeline View” option give job name as “MyBuildFlowPipeline-Jobs”
+Then select initial job “Buildjob”
+And save ,see the output
+Note: Options can be kept default options
+
+B)select again “No Of Displayed Builds” give "5" and save ,see output
+
+C)Under “BuildPipeline” screen just click on “run“ option and observer scree build flow only after other deploying .
+
+D) under Console Output Link Style” see option 1-LightBox, 2-newWindow ,3-This window. ,,,observer scree outputs windows each
+
+E) observer click on “Re-Run “ options
+
+--------------- How to setup "Delivery Pipeline" flow jobs -------------
+
+Once this is done do it for same above three jobs using "Delivery Pipeline"
+--Install pipeline then select All+ --click on "+" option and give the name of "Delivery Pipeline"
+-->Map all the options as
+
+++++++++++++Jenkins CICD:Using CICD Pipeline - Maven Build job,Maven TestJob and Deploy Tomcat job++++++++
+
+
+
+--------------------------
+1.How to change Jenkins Home Directory why?
+An:to move jenkins home directory to a location ,where it has enough disk space
+and as per project requirement
+
+Step 1 : Check your current home directory
+
+Step 2 : Create a new folder (which will be new home dir)
+
+Step 3 : Copy all data from old dir to new dir
+
+Step 4 : change env variable - JENKINS_HOME and set to new dir
+    Windows - change env variable
+   Mac - goto terminaal
+ export JENKINS_HOME=/Users/raghav/Desktop/Tools/Jenkins/JenkinsHome/
+
+Step 5 : restart Jenkins
+
+2.How to use CLI (command line interface)
+3.How to create Users + Manage + Assign Roles
+4.Basic Configurations
+5.What is BLUE OCEAN (How to get started)
+6.Jenkins Pipeline Publish code to SonarQube for analysis
+7.Jenkins, Mark build as failed, if SonarQube quality checks not met
+8.enkins Pipeline script parameterized builds
+
+9.How to Trigger a remote build + Job chaining In Jenkins
+10.Multi Branch Pipeline Job in Jenkins
+
