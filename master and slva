@@ -1,0 +1,24 @@
+1.which plugins u use mostly?
+
+2.Note : In case if not taking into switch user then please try to modify the below line in ""/etc/passwd ""
+bash-4.2$ sudo cat /etc/passwd
+jenkins:x:996:994:Jenkins Automation Server:/var/lib/jenkins:/bin/false
+
+Here just replace with "false" to "bash" then save it and exit "/etc/passwd"
+
+Then after try to switch the user "jenkins "
+[root@ip-10-0-2-83 ec2-user]# su jenkins
+bash-4.2$
+
+
+%%%%%%%%%%master and slave model%%%%%%%%%%%%%%%%%%%%%%
+
+3.of executors: The maximum number of concurrent builds that Jenkins may perform on this agent. 
+I have used 1 executor for testing purpose, but a good practice would be the number of CPU cores on the machine.
+
+Remote root directory: An agent needs to have a directory dedicated to Jenkins. 
+Specify the path to this directory on the agent. I’ve specified /home/ec2-user/jenkins as the remote root directory.
+
+Labels: Labels are used to group multiple agents into one logical group. Multiple labels must be separated by a space.
+
+&&&&&&&&&Integration between jenkins and github&&&&&&&&&&
